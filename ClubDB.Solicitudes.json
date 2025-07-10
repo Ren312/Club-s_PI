@@ -1,0 +1,104 @@
+[{
+  "_id": {
+    "$oid": "6850230fa71be635095dc8f3"
+  },
+  "usuarioId": {
+    "$oid": "68501acffc58decd6d5dde6f"
+  },
+  "clubId": {
+    "$oid": "6849887d22376d9ed0f6bce2"
+  },
+  "carreraId": {
+    "$oid": "684ad57755496c11dabc181c"
+  },
+  "matricula": "123456",
+  "horaEstudiantil": "2:30 PM",
+  "gradoYGrupo": "3A",
+  "telefono": "555-1234-5678",
+  "email": "juan@example.com",
+  "descripcion": "Me interesa unirme para mejorar mis habilidades",
+  "fechaSolicitud": {
+    "$date": "2025-06-16T13:58:39.781Z"
+  },
+  "estado": "Pendiente",
+  "nombreClub": null,
+  "nombreCarrera": null
+},
+{
+  "_id": {
+    "$oid": "685027fa457c37848f3461e6"
+  },
+  "usuarioId": {
+    "$oid": "68502741457c37848f3461e5"
+  },
+  "clubId": {
+    "$oid": "6849887d22376d9ed0f6bce2"
+  },
+  "carreraId": {
+    "$oid": "684ad57755496c11dabc181c"
+  },
+  "matricula": "654321",
+  "horaEstudiantil": "3:00 PM",
+  "gradoYGrupo": "5B",
+  "telefono": "555-9876-5432",
+  "email": "iSak.cancino@uttn.mx",
+  "descripcion": "Actualización de solicitud: nueva descripción.",
+  "fechaSolicitud": {
+    "$date": "2025-06-16T14:19:38.126Z"
+  },
+  "estado": "Aprobado",
+  "nombreClub": null,
+  "nombreCarrera": null
+},
+{
+  "_id": {
+    "$oid": "68620ad1e539b0cc68d7e1c9"
+  },
+  "usuarioId": {
+    "$oid": "685c39330e7f8168bd8a7923"
+  },
+  "clubId": {
+    "$oid": "685b3cd33f1b8757661f2864"
+  },
+  "carreraId": {
+    "$oid": "684ad93455496c11dabc1836"
+  },
+  "matricula": "12345689898",
+  "horaEstudiantil": "10",
+  "gradoYGrupo": "5D",
+  "telefono": "1234567890",
+  "email": "usuario@dominio.com",
+  "descripcion": "Solicitud de ingreso al club de futbol",
+  "fechaSolicitud": {
+    "$date": "2025-06-30T03:56:01.118Z"
+  },
+  "estado": "Pendiente",
+  "nombreClub": null,
+  "nombreCarrera": null
+},
+{
+  "_id": {
+    "$oid": "686bc33c5657deb1bd8d3963"
+  },
+  "usuarioId": {
+    "$oid": "6859ee439c6e14933b9659b2"
+  },
+  "clubId": {
+    "$oid": "685b3cd33f1b8757661f2864"
+  },
+  "carreraId": {
+    "$oid": "684ad90955496c11dabc1834"
+  },
+  "matricula": "2316109084",
+  "horaEstudiantil": "15:30",
+  "gradoYGrupo": "5C",
+  "telefono": "8998775046",
+  "email": "brandonrmz543@gmail.com",
+  "descripcion": "aefveva",
+  "fechaSolicitud": {
+    "$date": "2025-07-07T12:53:16.005Z"
+  },
+  "estado": "Pendiente",
+  "nombreClub": null,
+  "nombreCarrera": null
+}]

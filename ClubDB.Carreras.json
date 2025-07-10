@@ -1,0 +1,300 @@
+[{
+  "_id": {
+    "$oid": "684ad57755496c11dabc181c"
+  },
+  "nombreCarrera": "Licenciatura en Administración",
+  "descripcion": "Formación en gestión y administración de empresas, desarrollando habilidades en liderazgo, finanzas y recursos humanos.",
+  "fechaCreacion": {
+    "$date": "2025-06-12T13:26:15.024Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ad59455496c11dabc181d"
+  },
+  "nombreCarrera": "Ingeniería en Mecatrónica",
+  "descripcion": "Combina mecánica, electrónica y programación para el desarrollo de sistemas automatizados y robóticos.",
+  "fechaCreacion": {
+    "$date": "2025-06-12T13:26:44.716Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ad5b755496c11dabc181e"
+  },
+  "nombreCarrera": "Ingeniería en Logística Internacional",
+  "descripcion": "Se enfoca en la gestión eficiente de recursos, distribución y transporte a nivel global.",
+  "fechaCreacion": {
+    "$date": "2025-06-12T13:27:19.136Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ad5cc55496c11dabc181f"
+  },
+  "nombreCarrera": "Ingeniería en Energía y Desarrollo Sostenible",
+  "descripcion": "Especialización en la creación y manejo de soluciones energéticas sostenibles para enfrentar los desafíos medioambientales.",
+  "fechaCreacion": {
+    "$date": "2025-06-12T13:27:40.814Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ad5e655496c11dabc1820"
+  },
+  "nombreCarrera": "Ingeniería Aeronáutica en Manufactura",
+  "descripcion": "Formación en el diseño y producción de aeronaves, con énfasis en manufactura y tecnologías aeroespaciales.",
+  "fechaCreacion": {
+    "$date": "2025-06-12T13:28:06.822Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ad5ff55496c11dabc1821"
+  },
+  "nombreCarrera": "Ingeniería en Logística",
+  "descripcion": "Administración de procesos logísticos para optimizar la distribución de productos y servicios a nivel nacional e internacional.",
+  "fechaCreacion": {
+    "$date": "2025-06-12T13:28:31.978Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ad62155496c11dabc1822"
+  },
+  "nombreCarrera": "Ingeniería en Mantenimiento Industrial",
+  "descripcion": "Capacita en el diseño, mantenimiento y optimización de equipos industriales para garantizar su eficiencia.",
+  "fechaCreacion": {
+    "$date": "2025-06-12T13:29:05.865Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ad64555496c11dabc1823"
+  },
+  "nombreCarrera": "Ingeniería en Tecnologías de la Información e Innovación Digital",
+  "descripcion": "Desarrollo de soluciones tecnológicas avanzadas para la gestión de la información y la innovación digital.",
+  "fechaCreacion": {
+    "$date": "2025-06-12T13:29:41.083Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ad66f55496c11dabc1824"
+  },
+  "nombreCarrera": "Técnico Superior Universitario en Gestión de Capital Humano",
+  "descripcion": "Formación para gestionar y optimizar el talento humano en las organizaciones.",
+  "fechaCreacion": {
+    "$date": "2025-06-12T13:30:23.542Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ad6d655496c11dabc1825"
+  },
+  "nombreCarrera": "Técnico Superior Universitario en Emprendimiento, Formulación y Evaluación de Proyectos",
+  "descripcion": "Capacitación en la creación y evaluación de proyectos emprendedores.",
+  "fechaCreacion": {
+    "$date": "2025-06-12T13:32:06.062Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ad6e655496c11dabc1826"
+  },
+  "nombreCarrera": "Técnico Superior Universitario en Automatización",
+  "descripcion": "Formación en sistemas automatizados para la mejora de procesos industriales.",
+  "fechaCreacion": {
+    "$date": "2025-06-12T13:32:22.957Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ad7bd55496c11dabc1827"
+  },
+  "nombreCarrera": "Técnico Superior Universitario en Robótica",
+  "descripcion": "Desarrollo y mantenimiento de robots industriales y de servicio.",
+  "fechaCreacion": {
+    "$date": "2025-06-12T13:35:57.377Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ad7e855496c11dabc1828"
+  },
+  "nombreCarrera": "Técnico Superior Universitario en Sistemas de Manufactura Flexible",
+  "descripcion": "Diseño y mejora de sistemas productivos adaptables a diversas necesidades de fabricación.",
+  "fechaCreacion": {
+    "$date": "2025-06-12T13:36:40.111Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ad7fc55496c11dabc1829"
+  },
+  "nombreCarrera": "Técnico Superior Universitario en Operaciones Logísticas y Comercio Exterior",
+  "descripcion": "Especialización en la gestión de operaciones logísticas y comercio internacional.",
+  "fechaCreacion": {
+    "$date": "2025-06-12T13:37:00.522Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ad81b55496c11dabc182a"
+  },
+  "nombreCarrera": "Técnico Superior Universitario en Energía Turbo-Solar",
+  "descripcion": "Capacitación en sistemas energéticos combinados de turbinas y paneles solares.",
+  "fechaCreacion": {
+    "$date": "2025-06-12T13:37:31.587Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ad83d55496c11dabc182b"
+  },
+  "nombreCarrera": "Técnico Superior Universitario en Manufactura en Aeronáutica",
+  "descripcion": "Formación técnica en la producción de componentes aeronáuticos.",
+  "fechaCreacion": {
+    "$date": "2025-06-12T13:38:05.808Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ad85055496c11dabc182c"
+  },
+  "nombreCarrera": "Técnico Superior Universitario en Cadena de Suministros",
+  "descripcion": "Optimización y gestión de los flujos de materiales y productos en la cadena de suministros.",
+  "fechaCreacion": {
+    "$date": "2025-06-12T13:38:24.409Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ad86555496c11dabc182d"
+  },
+  "nombreCarrera": "Técnico Superior Universitario en Transporte y Movilidad",
+  "descripcion": "Desarrollo de soluciones para mejorar la eficiencia en sistemas de transporte y movilidad urbana..",
+  "fechaCreacion": {
+    "$date": "2025-06-12T13:38:45.225Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ad88155496c11dabc182e"
+  },
+  "nombreCarrera": "Técnico Superior Universitario en Mantenimiento Industrial",
+  "descripcion": "Capacitación en el mantenimiento preventivo y correctivo de equipos industriales.",
+  "fechaCreacion": {
+    "$date": "2025-06-12T13:39:13.469Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ad88f55496c11dabc182f"
+  },
+  "nombreCarrera": "Técnico Superior Universitario en Mantenimiento Petrolero",
+  "descripcion": "Formación en el mantenimiento de equipos y sistemas en la industria petrolera.",
+  "fechaCreacion": {
+    "$date": "2025-06-12T13:39:27.241Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ad8a655496c11dabc1830"
+  },
+  "nombreCarrera": "Técnico Superior Universitario en Ciencia de Datos",
+  "descripcion": "Análisis y gestión de grandes volúmenes de datos para generar información estratégica.",
+  "fechaCreacion": {
+    "$date": "2025-06-12T13:39:50.836Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ad8bc55496c11dabc1831"
+  },
+  "nombreCarrera": "Técnico Superior Universitario en Desarrollo de Software Multiplataforma",
+  "descripcion": "Desarrollo de aplicaciones móviles y de escritorio para diferentes sistemas operativos.",
+  "fechaCreacion": {
+    "$date": "2025-06-12T13:40:12.170Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ad8d655496c11dabc1832"
+  },
+  "nombreCarrera": "Técnico Superior Universitario en Entornos Virtuales y Negocios Digitales",
+  "descripcion": "Diseño de soluciones digitales y entornos virtuales aplicados a los negocios.",
+  "fechaCreacion": {
+    "$date": "2025-06-12T13:40:38.580Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ad8ec55496c11dabc1833"
+  },
+  "nombreCarrera": "Técnico Superior Universitario en Infraestructura de Redes Digitales",
+  "descripcion": "Diseño, implementación y mantenimiento de redes digitales y de telecomunicaciones.",
+  "fechaCreacion": {
+    "$date": "2025-06-12T13:41:00.514Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ad90955496c11dabc1834"
+  },
+  "nombreCarrera": "Técnico Superior Universitario en Inteligencia Artificial",
+  "descripcion": "Desarrollo de aplicaciones y sistemas basados en inteligencia artificial y machine learning.",
+  "fechaCreacion": {
+    "$date": "2025-06-12T13:41:29.179Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ad92155496c11dabc1835"
+  },
+  "nombreCarrera": "Técnico Superior Universitario en Procesos Productivos",
+  "descripcion": "Optimización de procesos industriales para mejorar la calidad y eficiencia de la producción.",
+  "fechaCreacion": {
+    "$date": "2025-06-12T13:41:53.637Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ad93455496c11dabc1836"
+  },
+  "nombreCarrera": "Técnico Superior Universitario en Moldeo de Plásticos",
+  "descripcion": "Formación en la fabricación y diseño de productos plásticos mediante procesos de moldeo..",
+  "fechaCreacion": {
+    "$date": "2025-06-12T13:42:12.051Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ad94455496c11dabc1837"
+  },
+  "nombreCarrera": "Técnico Superior Universitario en Sistemas de Gestión de Calidad",
+  "descripcion": "Implementación y auditoría de sistemas de calidad en diferentes sectores industriales.",
+  "fechaCreacion": {
+    "$date": "2025-06-12T13:42:28.770Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684ada3655496c11dabc1838"
+  },
+  "nombreCarrera": "Ingeniería Industrial",
+  "descripcion": "Optimización de procesos industriales mediante técnicas de producción, calidad y gestión de operaciones.",
+  "fechaCreacion": {
+    "$date": "2025-06-12T13:46:30.503Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686059f19034bc9060afd913"
+  },
+  "nombreCarrera": "ingenieria en papules",
+  "descripcion": "vdsvsdav",
+  "fechaCreacion": {
+    "$date": "2025-06-28T21:09:05.646Z"
+  }
+}]

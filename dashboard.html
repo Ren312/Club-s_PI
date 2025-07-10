@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script src="https://kit.fontawesome.com/ab196568d8.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/Dshhboard.css"/>
+  <title>Resumen General</title>
+</head>
+<body>
+
+<header>
+  <img alt="Logo UTTN" src="./img/WhatsApp Image 2025-05-29 at 7.56.07 AM.jpeg"/>
+  <nav class="nav-buttons">
+    <a href="./index.html"><i class="fa-solid fa-right-from-bracket"></i></a>
+  </nav>
+</header>
+
+<div class="dashboard-container">
+
+<aside class="sidebar">
+  <h2>Menú</h2>
+  <ul>
+     <li><a href="./dashboard.html"><i class="fa-solid fa-house"></i> Inicio</a></li>
+    <li><a href="./dashclub.html"><i class="fa-solid fa-people-group"></i> Clubs</a></li>
+    <li><a href="./dashuser.html"><i class="fa-solid fa-users"></i> Usuarios</a></li>
+    <li><a href="carreras.html"><i class="fa-solid fa-graduation-cap"></i> Carreras</a></li>
+    <li><a href="./dashsolicitud.html"><i class="fa-solid fa-envelope-open-text"></i> Solicitudes</a></li>
+    
+  </ul>
+</aside>
+
+<main class="main-content">
+
+<h1>Resumen General</h1>
+<div class="cards" id="resumen-clubes"></div>
+<h2>Progreso Individual</h2>
+<div class="table-wrapper">
+<table>
+<thead><tr><th>Nombre</th><th>Club</th><th>Progreso</th></tr></thead>
+<tbody id="tabla-progreso"></tbody>
+</table>
+</div>
+
+
+<div style="margin-top: 20px;">
+  <button onclick="exportarExcel('tabla-progreso')">📊 Exportar a Excel</button>
+  <button onclick="exportarPDF('tabla-progreso')">📄 Exportar a PDF</button>
+</div>
+
+</main>
+</div>
+<script src="js/dashboard.js"></script>
+
+<script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+<script>
+function obtenerTablaLimpia(tablaId) {
+  const tabla = document.getElementById(tablaId);
+  const clon = tabla.closest("div.table-wrapper").querySelector("table").cloneNode(true);
+  clon.querySelectorAll("tr").forEach(tr => {
+    tr.querySelectorAll("td:last-child, th:last-child").forEach(td => td.remove());
+  });
+  return clon;
+}
+
+function exportarExcel(tablaId) {
+  const tablaLimpia = obtenerTablaLimpia(tablaId);
+  const wb = XLSX.utils.table_to_book(tablaLimpia, { sheet: "Datos" });
+  XLSX.writeFile(wb, "datos_" + tablaId + ".xlsx");
+}
+
+async function exportarPDF(tablaId) {
+  const { jsPDF } = window.jspdf;
+  const tabla = document.getElementById(tablaId);
+  const doc = new jsPDF();
+
+  const head = [];
+  const body = [];
+
+  const encabezados = tabla.closest("table").querySelectorAll("thead th");
+  const headers = [...encabezados].slice(0, -1).map(th => th.innerText.trim());
+  head.push(headers);
+
+  const filas = tabla.closest("table").querySelectorAll("tbody tr");
+  filas.forEach(fila => {
+    const celdas = fila.querySelectorAll("td");
+    const datos = [...celdas].slice(0, -1).map(td => td.innerText.trim());
+    body.push(datos);
+  });
+
+  doc.text("Exportación: " + tablaId, 14, 15);
+  doc.autoTable({ startY: 20, head: head, body: body });
+  doc.save("datos_" + tablaId + ".pdf");
+}
+</script>
+
+</body>
+</html>

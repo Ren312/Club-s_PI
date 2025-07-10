@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <script src="https://kit.fontawesome.com/ab196568d8.js" crossorigin="anonymous"></script>
+    <title>CLUBS - Registro</title>
+    <link rel="stylesheet" href="./css/login.css" />
+</head>
+<body>
+    
+<header>
+    <a href="./index.html" class="enlace">
+        <img src="./img/WhatsApp Image 2025-05-29 at 7.56.07 AM.jpeg" alt="logo UTTN">
+    </a>
+    <nav class="nav-buttons">
+        <a href="./index.html"><i class="fa-solid fa-house"></i></a>
+        <a href="#clubes"><i class="fa-solid fa-flag-checkered"></i></a>
+        <a href="./login.html"><i class="fa-solid fa-user"></i></a>
+    </nav>
+</header>
+
+    <div id="login-box" class="form-box">
+        <h1>Registro</h1>
+
+        <form id="registro-form">
+            <input type="text" id="new-username" placeholder="Usuario" required />
+            <input type="text" id="new-cuenta" placeholder="Correo" required />
+            <input type="password" id="new-password" placeholder="Contraseña" required />
+            <input type="password" id="confirm-password" placeholder="Confirmar contraseña" required />
+            <button type="submit">Registrarte</button>
+        </form>
+        <p id="register-error"></p>
+        <p>¿Ya tienes cuenta? <a href="./login.html">Inicia sesión</a></p>
+    </div>
+
+    <script src="./js/main.js"></script>
+    <script>
+    // Función para manejar el evento de enviar el formulario
+    $("#registro-form").on("submit", function(event) {
+        event.preventDefault(); // Evitar que el formulario se envíe de forma tradicional
+
+        // Obtener los valores del formulario
+        var nombre = $("#new-username").val();  // Usar 'nombre' en lugar de 'usuario'
+        var email = $("#new-cuenta").val();
+        var password = $("#new-password").val();
+        var confirmPassword = $("#confirm-password").val();
+
+        // Verificar que las contraseñas coincidan
+        if (password !== confirmPassword) {
+            $("#register-error").text("Las contraseñas no coinciden.");
+            return;
+        }
+
+        // Enviar los datos con AJAX
+        $.ajax({
+            url: "https://localhost:7065/api/users",  // Ruta del endpoint para crear usuario
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({
+                Nombre: nombre,  // Cambiado de 'Usuario' a 'Nombre'
+                Email: email,
+                Contraseña: password,
+                RepetirContraseña: confirmPassword  // Incluimos RepetirContraseña para validación
+            }),
+            success: function(response) {
+                // Si el registro es exitoso
+                console.log("Registro exitoso:", response);
+
+                // Redirigir al usuario a la página de login
+                window.location.href = "./login.html"; // Redirige a la página de login
+            },
+            error: function(xhr, status, error) {
+                // Si hay un error, mostrar el mensaje en el UI
+                console.log("Error en el registro:", error);
+                if (xhr.status === 400) {
+                    $("#register-error").text(xhr.responseText);  // Mostrar el mensaje de error del backend
+                } else {
+                    $("#register-error").text("Hubo un error al intentar registrarte. Intenta nuevamente.");
+                }
+            }
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Carreras</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"> <!-- Para iconos -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+
+        td button {
+            padding: 6px 12px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        td button.edit {
+            background-color: #ffc107;
+            color: white;
+            border: none;
+        }
+
+        td button.delete {
+            background-color: #dc3545;
+            color: white;
+            border: none;
+        }
+
+        form {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        form input, form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        form button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #218838;
+        }
+
+        .error-message {
+            color: red;
+            display: none;
+            margin-top: 10px;
+        }
+
+        .success-message {
+            color: green;
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Título del dashboard -->
+    <h2>Dashboard de Carreras</h2>
+
+    <!-- Tabla para mostrar todas las carreras -->
+    <table id="carrerasTable">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Las carreras se llenarán aquí -->
+        </tbody>
+    </table>
+
+    <!-- Formulario para crear o actualizar carrera -->
+    <h3>Formulario de Carrera</h3>
+    <form id="carreraForm">
+        <input type="hidden" id="carreraId">
+        <label for="nombreCarrera">Nombre Carrera:</label>
+        <input type="text" id="nombreCarrera" required><br>
+
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" required></textarea><br>
+
+        <!-- Botones de acción -->
+        <button type="submit" id="submit-create">Guardar Carrera</button>
+        <button type="submit" id="submit-update" style="display: none;">Actualizar Carrera</button>
+    </form>
+
+    <!-- Mensajes de error y éxito -->
+    <div id="errorMessage" class="error-message"></div>
+    <div id="successMessage" class="success-message"></div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        // Cargar las carreras al iniciar
+        loadCarreras();
+
+        // Función para cargar todas las carreras
+        function loadCarreras() {
+            $.ajax({
+                url: "https://localhost:7065/api/Carreras/dashgetAllCarrerasDto",  // Endpoint para obtener las carreras
+                type: "GET",
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem("token")  // Añadir token JWT en el header
+                },
+                success: function(response) {
+                    const carreras = response;
+                    const tbody = $('#carrerasTable tbody');
+                    tbody.empty();  // Limpiar la tabla antes de agregar nuevas filas
+
+                    carreras.forEach(carrera => {
+                        tbody.append(`
+                            <tr>
+                                <td>${carrera.id}</td>
+                                <td>${carrera.nombreCarrera}</td>
+                                <td>${carrera.descripcion}</td>
+                                <td>
+                                    <button class="edit" onclick="editCarrera('${carrera.id}')">Editar</button>
+                                    <button class="delete" onclick="deleteCarrera('${carrera.id}')">Eliminar</button>
+                                </td>
+                            </tr>
+                        `);
+                    });
+                },
+                error: function(xhr, status, error) {
+                    $('#errorMessage').text("Error al cargar las carreras").show();
+                }
+            });
+        }
+
+        // Función para crear o actualizar una carrera
+        $('#carreraForm').submit(function(event) {
+            event.preventDefault();
+
+            const id = $('#carreraId').val();
+            const nombreCarrera = $('#nombreCarrera').val();
+            const descripcion = $('#descripcion').val();
+
+            if (id) {
+                // Si hay un ID, actualizar la carrera
+                $.ajax({
+                    url: `https://localhost:7065/api/Carreras/dashupdateCarrera/${id}`,  // URL actualizada
+                    type: "PUT",
+                    contentType: "application/json",
+                    headers: {
+                        "Authorization": "Bearer " + localStorage.getItem("token")
+                    },
+                    data: JSON.stringify({ NombreCarrera: nombreCarrera, Descripcion: descripcion }),
+                    success: function(response) {
+                        $('#successMessage').text("Carrera actualizada correctamente").show();
+                        loadCarreras();  // Recargar las carreras
+                        resetForm();  // Restablecer el formulario
+                    },
+                    error: function(xhr, status, error) {
+                        $('#errorMessage').text("Error al actualizar la carrera").show();
+                    }
+                });
+            } else {
+                // Si no hay un ID, crear la carrera
+                $.ajax({
+                    url: "https://localhost:7065/api/Carreras/dashcreateCarrera",
+                    type: "POST",
+                    contentType: "application/json",
+                    headers: {
+                        "Authorization": "Bearer " + localStorage.getItem("token")
+                    },
+                    data: JSON.stringify({ NombreCarrera: nombreCarrera, Descripcion: descripcion }),
+                    success: function(response) {
+                        $('#successMessage').text("Carrera creada correctamente").show();
+                        loadCarreras();  // Recargar las carreras
+                        resetForm();  // Restablecer el formulario
+                    },
+                    error: function(xhr, status, error) {
+                        $('#errorMessage').text("Error al crear la carrera").show();
+                    }
+                });
+            }
+        });
+
+        // Función para editar una carrera
+        window.editCarrera = function(id) {
+            $.ajax({
+                url: `https://localhost:7065/api/Carreras/${id}`,  // Obtener la carrera por ID
+                type: "GET",
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem("token")
+                },
+                success: function(response) {
+                    const carrera = response;
+                    console.log(carrera);
+                    
+                    $('#carreraId').val(carrera.id);  // Asignar el ID al campo oculto
+                    $('#nombreCarrera').val(carrera.nombreCarrera);  // Asignar el nombre
+                    $('#descripcion').val(carrera.descripcion);  // Asignar la descripción
+                    $('#submit-create').hide();  // Ocultar el botón de crear
+                    $('#submit-update').show();  // Mostrar el botón de actualizar
+                },
+                error: function(xhr, status, error) {
+                    $('#errorMessage').text("Error al cargar la carrera para editar").show();
+                }
+            });
+        }
+
+        // Función para eliminar una carrera
+        window.deleteCarrera = function(id) {
+            if (confirm("¿Estás seguro de que deseas eliminar esta carrera?")) {
+                $.ajax({
+                    url: `https://localhost:7065/api/Carreras/dashdeleteCarrera/${id}`,  // Eliminar carrera
+                    type: "DELETE",
+                    headers: {
+                        "Authorization": "Bearer " + localStorage.getItem("token")
+                    },
+                    success: function(response) {
+                        $('#successMessage').text("Carrera eliminada correctamente").show();
+                        loadCarreras();  // Recargar las carreras
+                    },
+                    error: function(xhr, status, error) {
+                        $('#errorMessage').text("Error al eliminar la carrera").show();
+                    }
+                });
+            }
+        }
+
+        // Función para restablecer el formulario
+        function resetForm() {
+            $('#carreraId').val('');  // Limpiar el campo oculto de ID
+            $('#nombreCarrera').val('');  // Limpiar el campo de nombre
+            $('#descripcion').val('');  // Limpiar el campo de descripción
+            $('#submit-create').show();  // Mostrar el botón de crear
+            $('#submit-update').hide();  // Ocultar el botón de actualizar
+        }
+    });
+</script>
+
+</body>
+</html>

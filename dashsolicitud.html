@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script src="https://kit.fontawesome.com/ab196568d8.js" crossorigin="anonymous"></script>
+  <title>Solicitudes - UTTN</title>
+  <link rel="stylesheet" href="css/Dshhboard.css" />
+</head>
+<body>
+<header>
+  <img src="./img/WhatsApp Image 2025-05-29 at 7.56.07 AM.jpeg" alt="Logo UTTN" />
+  <nav class="nav-buttons">
+    <a href="./index.html"><i class="fa-solid fa-right-from-bracket"></i></a>
+  </nav>
+</header>
+<div class="dashboard-container">
+  <aside class="sidebar">
+    <h2>Menú</h2>
+    <ul>
+     <li><a href="./dashboard.html"><i class="fa-solid fa-house"></i> Inicio</a></li>
+    <li><a href="./dashclub.html"><i class="fa-solid fa-people-group"></i> Clubs</a></li>
+    <li><a href="./dashuser.html"><i class="fa-solid fa-users"></i> Usuarios</a></li>
+    <li><a href="carreras.html"><i class="fa-solid fa-graduation-cap"></i> Carreras</a></li>
+    <li><a href="./dashsolicitud.html"><i class="fa-solid fa-envelope-open-text"></i> Solicitudes</a></li>
+    </ul>
+  </aside>
+
+  <main class="main-content">
+    <h2>Agregar nueva solicitud</h2>
+    <form id="form-solicitud">
+      <input type="text" name="matricula" placeholder="Matrícula" required />
+      <input type="text" name="horaEstudiantil" placeholder="Hora Estudiantil" required />
+      <input type="text" name="gradoYGrupo" placeholder="Grado y Grupo" required />
+      <input type="text" name="telefono" placeholder="Teléfono" required />
+      <input type="email" name="email" placeholder="Correo Electrónico" required />
+      <input type="text" name="descripcion" placeholder="Descripción" required />
+      <input type="text" name="estado" placeholder="Estado" required />
+      <input type="text" name="nombreClub" placeholder="Nombre del Club" />
+      <input type="text" name="nombreCarrera" placeholder="Nombre de la Carrera" />
+      <button type="submit">Agregar Solicitud</button>
+    </form>
+
+    <section class="table-section">
+      <h2>Solicitudes registradas</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Matrícula</th>
+              <th>Email</th>
+              <th>Hora</th>
+              <th>Grupo</th>
+              <th>Teléfono</th>
+              <th>Descripción</th>
+              <th>Fecha</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-solicitudes"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <div style="margin-top: 20px;">
+      <button onclick="exportarExcel()">📊 Exportar a Excel</button>
+      <button onclick="exportarPDF()">📄 Exportar a PDF</button>
+    </div>
+  </main>
+</div>
+
+<script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+<script>
+  const form = document.getElementById("form-solicitud");
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const data = {
+      matricula: form.matricula.value,
+      horaEstudiantil: form.horaEstudiantil.value,
+      gradoYGrupo: form.gradoYGrupo.value,
+      telefono: form.telefono.value,
+      email: form.email.value,
+      descripcion: form.descripcion.value,
+      estado: form.estado.value,
+      nombreClub: form.nombreClub.value,
+      nombreCarrera: form.nombreCarrera.value,
+      fechaSolicitud: new Date()
+    };
+    const method = form.dataset.editingId ? "PUT" : "POST";
+    const url = form.dataset.editingId ? `http://localhost:3000/solicitudes/${form.dataset.editingId}` : "http://localhost:3000/solicitudes";
+
+    fetch(url, {
+      method,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(() => {
+      alert(method === "POST" ? "Solicitud agregada" : "Solicitud actualizada");
+      form.reset();
+      delete form.dataset.editingId;
+      cargarSolicitudes();
+    });
+  });
+
+  function cargarSolicitudes() {
+    fetch("http://localhost:3000/solicitudes")
+      .then(res => res.json())
+      .then(solicitudes => {
+        const tbody = document.getElementById("tabla-solicitudes");
+        tbody.innerHTML = "";
+        solicitudes.forEach(s => {
+          const fecha = s.fechaSolicitud ? new Date(s.fechaSolicitud).toLocaleDateString() : "";
+          tbody.innerHTML += `
+            <tr>
+              <td>${s.matricula}</td>
+              <td>${s.email}</td>
+              <td>${s.horaEstudiantil}</td>
+              <td>${s.gradoYGrupo}</td>
+              <td>${s.telefono}</td>
+              <td>${s.descripcion}</td>
+              <td>${fecha}</td>
+              <td>${s.estado}</td>
+              <td>
+                <button onclick='editarSolicitud(${JSON.stringify(s)})'>✏️</button>
+                <button onclick='eliminarSolicitud("${s._id}")'>🗑️</button>
+              </td>
+            </tr>`;
+        });
+      });
+  }
+
+  function editarSolicitud(s) {
+    const form = document.getElementById("form-solicitud");
+    for (let key in s) {
+      if (form[key]) form[key].value = s[key];
+    }
+    form.dataset.editingId = s._id;
+  }
+
+  function eliminarSolicitud(id) {
+    if (confirm("¿Deseas eliminar esta solicitud?")) {
+      fetch(`http://localhost:3000/solicitudes/${id}`, { method: "DELETE" })
+        .then(() => {
+          alert("Solicitud eliminada");
+          cargarSolicitudes();
+        });
+    }
+  }
+
+  function exportarExcel() {
+    const tabla = document.querySelector("#tabla-solicitudes").closest("table");
+    const wb = XLSX.utils.table_to_book(tabla, { sheet: "Solicitudes" });
+    XLSX.writeFile(wb, "solicitudes.xlsx");
+  }
+
+  async function exportarPDF() {
+    const { jsPDF } = window.jspdf;
+    const tabla = document.querySelector("#tabla-solicitudes").closest("table");
+    const doc = new jsPDF();
+    const head = [[]];
+    tabla.querySelectorAll("thead th").forEach(th => head[0].push(th.innerText));
+    const body = [];
+    tabla.querySelectorAll("tbody tr").forEach(tr => {
+      const row = [];
+      tr.querySelectorAll("td").forEach(td => row.push(td.innerText));
+      body.push(row);
+    });
+    doc.text("Solicitudes registradas", 14, 15);
+    doc.autoTable({ startY: 20, head, body });
+    doc.save("solicitudes.pdf");
+  }
+
+  window.onload = cargarSolicitudes;
+</script>
+</body>
+</html>

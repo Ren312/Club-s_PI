@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script src="https://kit.fontawesome.com/ab196568d8.js" crossorigin="anonymous"></script>
+  <title>CLUBS - [NOMBRE]</title>
+  <link rel="stylesheet" href="./css/club´s.css">
+</head>
+<body>
+
+<header>
+  <a href="./index.html" class="enlace">
+    <img src="./img/WhatsApp Image 2025-05-29 at 7.56.07 AM.jpeg" alt="logo UTTN">
+  </a>
+  <nav class="nav-buttons">
+    <a href="./index.html"><i class="fa-solid fa-house"></i></a>
+    <a href="#clubes"><i class="fa-solid fa-flag-checkered"></i></a>
+    <a href="./login.html"><i class="fa-solid fa-user"></i></a>
+  </nav>
+</header>
+
+<h1>Club de [NOMBRE]</h1>
+
+<div class="carrusel">
+  <div class="slide activo"><img src="./img/ciclismo1.jpg" alt="Imagen 1"></div>
+  <div class="slide"><img src="./img/ciclismo2.jpg" alt="Imagen 2"></div>
+  <div class="slide"><img src="./img/ciclismo3.jpeg" alt="Imagen 3"></div>
+  <div class="slide"><img src="./img/ciclismo4.jpg" alt="Imagen 4"></div>
+</div>
+
+<h2>Horarios</h2>
+<h3>3:00PM - 6:00PM</h3>
+<p>
+  [DESCRIPCION]
+</p>
+
+<button onclick="abrirModal()">Unirme al Club</button>
+
+<div id="miModal" class="modal">
+  <div class="modal-contenido">
+    <span class="cerrar" onclick="cerrarModal()">&times;</span>
+    <h2>Solicitud de Inscripción</h2>
+    <div class="solicitud-box">
+      <form class="solicitud-form">
+        <input type="text" id="name" placeholder="Nombre*" required>
+        <input type="text" id="matricula" placeholder="Matrícula*" required>
+        <input type="text" id="carrera" placeholder="Carrera*" required>
+        <select name="opcion" id="opcion" required>
+          <option value="">Hora de salida*</option>
+          <option value="salida1">2:30PM</option>
+          <option value="salida2">3:00PM</option>
+          <option value="salida3">4:00PM</option> 
+        </select>
+        <input type="text" id="gradoygrupo" placeholder="Grado y Grupo*" required>
+        <input type="text" id="descripcion" placeholder="Descripción adicional*" required>
+        <button type="submit">Enviar Solicitud</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="./js/ciclismo.js"></script>
+</body>
+</html>

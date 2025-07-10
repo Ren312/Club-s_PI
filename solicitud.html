@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://kit.fontawesome.com/ab196568d8.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/solicitud.css">
+    <title>Mis Solicitudes</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <header>
+        <a href="./index.html" class="enlace">
+            <img src="./img/WhatsApp Image 2025-05-29 at 7.56.07 AM.jpeg" alt="logo UTTN">
+        </a>
+        <nav class="nav-buttons">
+            <a href="./index.html"><i class="fa-solid fa-house"></i></a>
+            <a href="#clubes"><i class="fa-solid fa-users"></i></a>
+            <a href="./login.html"><i class="fa-solid fa-user"></i></a>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>Mis Solicitudes</h1>
+
+        <div class="solicitud-info">
+            <p><strong>Matricula:</strong> <span id="get_matricula">Vacio</span></p>
+            <p><strong>Hora Estudiantil:</strong> <span id="get_horaEstudiantil">Vacio</span></p>
+            <p><strong>Grado y Grupo:</strong> <span id="get_gradoYGrupo">Vacio</span></p>
+            <p><strong>Telefono:</strong> <span id="get_telefono">Vacio</span></p>
+            <p><strong>Email:</strong> <span id="get_email">Vacio</span></p>
+            <p><strong>Descripción:</strong> <span id="get_descripcion">Vacio</span></p>
+            <p><strong>Estado:</strong> <span id="get_estado">Vacio</span></p>
+            <p><strong>Club:</strong> <span id="get_nombreClub">Vacio</span></p>
+            <p><strong>Carrera:</strong> <span id="get_nombreCarrera">Vacio</span></p>
+        </div>
+
+        <div class="main-buttons">
+            <button id="eliminarSolicitud" class="btn-primary">Eliminar Solicitud</button>
+            <button id="openCreateModal" class="btn-primary">Crear Solicitud</button>
+            <button id="openUpdateModal" class="btn-primary">Actualizar Solicitud</button>
+        </div>
+
+        <p id="error-message"></p>
+    </main>
+
+    <!-- Modal para Crear Solicitud -->
+    <div id="createModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeCreateModal">&times;</span>
+            <h2><i class="fa-solid fa-plus"></i> Crear Nueva Solicitud</h2>
+            <form id="create-solicitud">
+                <input type="text" id="create_nombre-club" placeholder="Nombre del Club" required />
+                <input type="text" id="create_nombre-carrera" placeholder="Nombre de la Carrera" required />
+                <input type="text" id="create_matricula" placeholder="Matrícula" required />
+                <input type="text" id="create_hora-estudiantil" placeholder="Hora Estudiantil" required />
+                <input type="text" id="create_grado-grupo" placeholder="Grado y Grupo" required />
+                <input type="text" id="create_telefono" placeholder="Teléfono" required />
+                <input type="email" id="create_email" placeholder="Email" required />
+                <textarea id="create_descripcion" placeholder="Descripción" required></textarea>
+                <div class="modal-buttons">
+                    <button type="submit" class="btn-modal">Enviar Solicitud</button>
+                    <button type="button" class="btn-modal btn-danger" id="cancelCreate">Cancelar</button>
+                </div>
+                <p id="create-error" style="color:red;"></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para Actualizar Solicitud -->
+    <div id="updateModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeUpdateModal">&times;</span>
+            <h2><i class="fa-solid fa-edit"></i> Actualizar Solicitud</h2>
+            <div class="edit-fields">
+                <div class="edit-field">
+                    <label for="edit_matricula">Matrícula:</label>
+                    <input type="text" id="edit_matricula" />
+                </div>
+                <div class="edit-field">
+                    <label for="edit_horaEstudiantil">Hora Estudiantil:</label>
+                    <input type="text" id="edit_horaEstudiantil" />
+                </div>
+                <div class="edit-field">
+                    <label for="edit_gradoYGrupo">Grado y Grupo:</label>
+                    <input type="text" id="edit_gradoYGrupo" />
+                </div>
+                <div class="edit-field">
+                    <label for="edit_telefono">Teléfono:</label>
+                    <input type="text" id="edit_telefono" />
+                </div>
+                <div class="edit-field">
+                    <label for="edit_email">Email:</label>
+                    <input type="email" id="edit_email" />
+                </div>
+                <div class="edit-field">
+                    <label for="edit_descripcion">Descripción:</label>
+                    <textarea id="edit_descripcion"></textarea>
+                </div>
+                <div class="edit-field">
+                    <label for="edit_nombreClub">Nombre del Club:</label>
+                    <input type="text" id="edit_nombreClub" />
+                </div>
+                <div class="edit-field">
+                    <label for="edit_nombreCarrera">Nombre de la Carrera:</label>
+                    <input type="text" id="edit_nombreCarrera" />
+                </div>
+            </div>
+            <div class="modal-buttons">
+                <button id="hechoSolicitud" class="btn-modal">Guardar Cambios</button>
+                <button id="cancelUpdate" class="btn-modal btn-danger">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Obtener la solicitud del usuario autenticado
+        function obtenerSolicitud() {
+            $.ajax({
+                url: "https://localhost:7065/api/solicitudes/getSolicitudUsuario",
+                type: "GET",
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem("token")
+                },
+                success: function(response) {
+                    const solicitud = response;
+                    $('#get_matricula').text(solicitud.matricula);
+                    $('#get_horaEstudiantil').text(solicitud.horaEstudiantil);
+                    $('#get_gradoYGrupo').text(solicitud.gradoYGrupo);
+                    $('#get_telefono').text(solicitud.telefono);
+                    $('#get_email').text(solicitud.email);
+                    $('#get_descripcion').text(solicitud.descripcion);
+                    $('#get_estado').text(solicitud.estado);
+                    $('#get_nombreClub').text(solicitud.nombreClub);
+                    $('#get_nombreCarrera').text(solicitud.nombreCarrera);
+                    
+                    // Llenar los campos del modal de actualización
+                    $('#edit_matricula').val(solicitud.matricula);
+                    $('#edit_horaEstudiantil').val(solicitud.horaEstudiantil);
+                    $('#edit_gradoYGrupo').val(solicitud.gradoYGrupo);
+                    $('#edit_telefono').val(solicitud.telefono);
+                    $('#edit_email').val(solicitud.email);
+                    $('#edit_descripcion').val(solicitud.descripcion);
+                    $('#edit_nombreClub').val(solicitud.nombreClub);
+                    $('#edit_nombreCarrera').val(solicitud.nombreCarrera);
+                },
+                error: function(xhr) {
+                    $('#error-message').text("No se encontraron solicitudes para este usuario.");
+                }
+            });
+        }
+
+        // Eliminar solicitud del usuario autenticado
+        $('#eliminarSolicitud').on('click', function() {
+            if (confirm('¿Estás seguro de que quieres eliminar esta solicitud?')) {
+                $.ajax({
+                    url: "https://localhost:7065/api/solicitudes/eliminarSolicitudUsuario",
+                    type: "DELETE",
+                    headers: {
+                        "Authorization": "Bearer " + localStorage.getItem("token")
+                    },
+                    success: function() {
+                        $('#solicitud-info').html("");
+                        $('#error-message').text("Solicitud eliminada correctamente.");
+                        setTimeout(function() {
+                            window.location.href = "solicitud.html";
+                        }, 2000);
+                    },
+                    error: function(xhr) {
+                        $('#error-message').text("Hubo un problema al intentar eliminar la solicitud.");
+                    }
+                });
+            }
+        });
+
+        // Funcionalidad de los modales
+        $('#openCreateModal').on('click', function() {
+            $('#createModal').fadeIn(300);
+        });
+
+        $('#openUpdateModal').on('click', function() {
+            obtenerSolicitud(); // Cargar datos actuales
+            $('#updateModal').fadeIn(300);
+        });
+
+        // Cerrar modales
+        $('#closeCreateModal, #cancelCreate').on('click', function() {
+            $('#createModal').fadeOut(300);
+        });
+
+        $('#closeUpdateModal, #cancelUpdate').on('click', function() {
+            $('#updateModal').fadeOut(300);
+        });
+
+        // Cerrar modal al hacer clic fuera de él
+        $('.modal').on('click', function(e) {
+            if (e.target === this) {
+                $(this).fadeOut(300);
+            }
+        });
+
+        // Crear solicitud
+        $("#create-solicitud").on("submit", function(event) {
+            event.preventDefault();
+
+            var nombreClub = $("#create_nombre-club").val().trim();
+            var nombreCarrera = $("#create_nombre-carrera").val().trim();
+            var matricula = $("#create_matricula").val().trim();
+            var horaEstudiantil = $("#create_hora-estudiantil").val().trim();
+            var gradoYGrupo = $("#create_grado-grupo").val().trim();
+            var telefono = $("#create_telefono").val().trim();
+            var email = $("#create_email").val().trim();
+            var descripcion = $("#create_descripcion").val().trim();
+
+            if (!nombreClub || !nombreCarrera) {
+                $("#create-error").text("Por favor ingresa todos los campos requeridos.");
+                return;
+            }
+
+            var solicitudData = {
+                NombreClub: nombreClub,
+                NombreCarrera: nombreCarrera,
+                Matricula: matricula || "",
+                HoraEstudiantil: horaEstudiantil || "",
+                GradoYGrupo: gradoYGrupo || "",
+                Telefono: telefono || "",
+                Email: email || "",
+                Descripcion: descripcion || ""
+            };
+
+            $.ajax({
+                url: "https://localhost:7065/api/solicitudes",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(solicitudData),
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem("token")
+                },
+                success: function(response) {
+                    $('#createModal').fadeOut(300);
+                    alert('Solicitud creada con éxito');
+                    window.location.href = "./solicitud.html";
+                },
+                error: function(xhr, status, error) {
+                    $("#create-error").text("Error al enviar la solicitud. Intenta de nuevo.");
+                }
+            });
+        });
+
+        // Actualizar solicitud
+        $('#hechoSolicitud').on('click', function() {
+            var solicitudData = {
+                Matricula: $('#edit_matricula').val(),
+                HoraEstudiantil: $('#edit_horaEstudiantil').val(),
+                GradoYGrupo: $('#edit_gradoYGrupo').val(),
+                Telefono: $('#edit_telefono').val(),
+                Email: $('#edit_email').val(),
+                Descripcion: $('#edit_descripcion').val(),
+                NombreClub: $('#edit_nombreClub').val(),
+                NombreCarrera: $('#edit_nombreCarrera').val()
+            };
+
+            $.ajax({
+                url: "https://localhost:7065/api/solicitudes/actualizarSolicitudUsuario",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(solicitudData),
+                headers: {
+                    "Authorization": "Bearer " + localStorage.getItem("token")
+                },
+                success: function(response) {
+                    $('#updateModal').fadeOut(300);
+                    alert('Solicitud actualizada con éxito');
+                    window.location.href = "./solicitud.html";
+                },
+                error: function(xhr, status, error) {
+                    $("#error-message").text("Error al actualizar la solicitud.");
+                }
+            });
+        });
+
+        // Al cargar la página, obtener la solicitud del usuario
+        $(document).ready(function() {
+            obtenerSolicitud();
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script src="https://kit.fontawesome.com/ab196568d8.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/Dshhboard.css"/>
+  <title>Agregar Usuario</title>
+</head>
+<body>
+
+<header>
+  <img alt="Logo UTTN" src="./img/WhatsApp Image 2025-05-29 at 7.56.07 AM.jpeg"/>
+  <nav class="nav-buttons">
+    <a href="./index.html"><i class="fa-solid fa-right-from-bracket"></i></a>
+  </nav>
+</header>
+
+<div class="dashboard-container">
+
+<aside class="sidebar">
+  <h2>Menú</h2>
+  <ul>
+     <li><a href="./dashboard.html"><i class="fa-solid fa-house"></i> Inicio</a></li>
+    <li><a href="./dashclub.html"><i class="fa-solid fa-people-group"></i> Clubs</a></li>
+    <li><a href="./dashuser.html"><i class="fa-solid fa-users"></i> Usuarios</a></li>
+    <li><a href="carreras.html"><i class="fa-solid fa-graduation-cap"></i> Carreras</a></li>
+    <li><a href="./dashsolicitud.html"><i class="fa-solid fa-envelope-open-text"></i> Solicitudes</a></li>
+  </ul>
+</aside>
+
+<main class="main-content">
+
+<h2>Agregar usuario</h2>
+<form id="form-usuario">
+  <input name="nombre" placeholder="Nombre completo" required="" type="text"/>
+  <input name="email" placeholder="Correo electrónico" required="" type="email"/>
+  <input name="contraseña" placeholder="Contraseña" required="" type="password"/>
+  <select name="rol" required="">
+    <option value="">Seleccione un rol</option>
+    <option value="Estudiante">Estudiante</option>
+    <option value="Maestro">Maestro</option>
+  </select>
+  <button type="submit">Agregar Usuario</button>
+</form>
+
+</main>
+</div>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

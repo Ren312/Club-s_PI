@@ -1,0 +1,177 @@
+[{
+  "_id": {
+    "$oid": "68426656c504fa9b7d8398d7"
+  },
+  "nombre": "brandon",
+  "email": "brandonrmz465@gmail.com",
+  "contraseña": "",
+  "role": "Estudiante",
+  "fecha_creacion": {
+    "$date": "2025-06-30T16:48:58.431Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "684328477d52dbf8742d1d8b"
+  },
+  "nombre": "Brandon",
+  "email": "Alexis",
+  "contraseña": "Galvan",
+  "role": "Estudiante"
+},
+{
+  "_id": {
+    "$oid": "68449677a10ac879010329fc"
+  },
+  "nombre": "Alexis",
+  "email": "alexis@gmail.com",
+  "contraseña": "12345",
+  "role": "string",
+  "fecha_creacion": {
+    "$date": "2025-06-07T19:41:00.049Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6844dfd02d1780b4348ed850"
+  },
+  "nombre": "alexiss",
+  "email": "alexisss@gmail.com",
+  "contraseña": "$2a$11$pN2pbGAzmaaGBPnFMF561u4xujBNwveJa2a6KRCSHON2hGbXjBLka",
+  "role": "string",
+  "fecha_creacion": {
+    "$date": "2025-06-08T00:55:56.067Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6846dae8da13614fc9a49b95"
+  },
+  "nombre": "david",
+  "email": "david@gmail.com",
+  "contraseña": "$2a$11$XOmB6Xv/GKQjR9BgYqZZjO554NoLA7h13ky3ZPYQ62fm/qlipuXAq",
+  "role": "string",
+  "fecha_creacion": {
+    "$date": "2025-06-09T12:59:32.383Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68501acffc58decd6d5dde6f"
+  },
+  "nombre": "Alexis Galvan",
+  "email": "brandonn@gmail.com",
+  "contraseña": "$2a$11$spU6gjxb2nyJZa246Y1kX.S9pKQpl7Z3GPrd2sRzpfVH4WHEniAOK",
+  "role": "Maestro",
+  "fecha_creacion": {
+    "$date": "2025-06-09T10:00:00.000Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68502741457c37848f3461e5"
+  },
+  "nombre": "Izak",
+  "email": "izak.cancino@uttn.mx",
+  "contraseña": "$2a$11$PfnyWXzoeDQv.WbkYeNW6eINMPL9b4OkYrc68oYsKt3FNvWrizYwq",
+  "role": "string",
+  "fecha_creacion": {
+    "$date": "2025-06-16T14:15:52.178Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6852bce1b5362494e054fb32"
+  },
+  "nombre": "Juan Pérez",
+  "email": "juan@example.com",
+  "contraseña": "$2a$11$lV7HYV7pCVow0pFE87DUOuMpjQZlwRui3Puu7/3Hy7vMthu7Pd5l2",
+  "role": "Estudiante",
+  "fecha_creacion": {
+    "$date": "2025-06-18T13:19:28.823Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6859ee439c6e14933b9659b2"
+  },
+  "nombre": "Brandon Alexis Galvan",
+  "email": "brandonrmz543@gmail.com",
+  "contraseña": "$2a$11$Wg0encTP/HqkfccfgEy32eytPPVg4l95va/WTn8JnAuW42OkvHFK.",
+  "role": "Maestro",
+  "fecha_creacion": {
+    "$date": "2025-06-24T00:16:02.307Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685b43bb331057ce06b24b6d"
+  },
+  "nombre": "negro",
+  "email": "negros@gmail.com",
+  "contraseña": "$2a$11$wYT1wyw4aiSZCJVCkXziCeL8.Ld2yohUWK2ofqYSHWusJvBDnMY02",
+  "role": "Estudiante",
+  "fecha_creacion": {
+    "$date": "2025-06-25T00:32:59.052Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685c39330e7f8168bd8a7923"
+  },
+  "nombre": "Emilio",
+  "email": "emilio@gmail.com",
+  "contraseña": "$2a$11$7GaEgWnXzsn8n4bIxc0q9uhrodQy5c04jjXcO/gEdaAvSQcSdNCHG",
+  "role": "Estudiante",
+  "fecha_creacion": {
+    "$date": "2025-06-25T17:59:39.890Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685e95a0813529b4fc32f67c"
+  },
+  "nombre": "Pepe",
+  "email": "pepe@gmail.com",
+  "contraseña": "12345678",
+  "role": "Estudiante",
+  "fecha_creacion": {
+    "$date": "2025-06-27T12:59:12.599Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "685e9cdb3537615d87d06b92"
+  },
+  "nombre": "brandonnnn",
+  "email": "bran@gmail.com",
+  "contraseña": "$2a$11$XbpioccA8NpJUl6ZC6olO.kpnoYlpp4mdtoj6S2PzjRqX4GlnQ3o2",
+  "role": "Estudiante",
+  "fecha_creacion": {
+    "$date": "2025-06-27T13:30:03.299Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686422840440562380603ae4"
+  },
+  "nombre": "Adolfo Neftali",
+  "email": "Adolfo@gmail.com",
+  "contraseña": "$2a$11$iW7zD/EqGizeYJwI8f30.OSA0k1a0.89GPE2ZNuFgYDFGw4GWOMVy",
+  "role": "Estudiante",
+  "fecha_creacion": {
+    "$date": "2025-07-01T18:01:40.282Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "686d604ef10e080bf166f95d"
+  },
+  "nombre": "Carlos@gmail.com",
+  "email": "carloss@gmail.com",
+  "contraseña": "$2a$11$tVZFJXAhBDce1UK9K9kfGO5TfFi/fdE2kHa24Ef9hi4qxwvLXiLSq",
+  "role": "Estudiante",
+  "fecha_creacion": {
+    "$date": "2025-07-08T18:15:41.805Z"
+  }
+}]

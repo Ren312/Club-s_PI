@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script src="https://kit.fontawesome.com/ab196568d8.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="css/Dshhboard.css"/>
+  <title>Agregar Club</title>
+</head>
+<body>
+
+<header>
+  <img alt="Logo UTTN" src="./img/WhatsApp Image 2025-05-29 at 7.56.07 AM.jpeg"/>
+  <nav class="nav-buttons">
+    <a href="./index.html"><i class="fa-solid fa-right-from-bracket"></i></a>
+  </nav>
+</header>
+
+<div class="dashboard-container">
+
+<aside class="sidebar">
+  <h2>Menú</h2>
+  <ul>
+       <li><a href="./dashboard.html"><i class="fa-solid fa-house"></i> Inicio</a></li>
+    <li><a href="./dashclub.html"><i class="fa-solid fa-people-group"></i> Clubs</a></li>
+    <li><a href="./dashuser.html"><i class="fa-solid fa-users"></i> Usuarios</a></li>
+    <li><a href="carreras.html"><i class="fa-solid fa-graduation-cap"></i> Carreras</a></li>
+    <li><a href="./dashsolicitud.html"><i class="fa-solid fa-envelope-open-text"></i> Solicitudes</a></li>
+  </ul>
+</aside>
+
+    <main class="main-content">
+        <h2>Agregar nuevo club</h2>
+        <form action="./php/agregar_club.php" method="POST">
+        <input name="nombre" placeholder="Nombre del club" required="" type="text"/>
+        <input name="descripcion" placeholder="Descripción" required="" type="text"/>
+        <input name="imagen" placeholder="Ruta de imagen (ej: ./img/logo.png)" required="" type="text"/>
+        <input name="pagina" placeholder="Archivo HTML del club (ej: futbol.html)" required="" type="text"/>
+        <button type="submit">Agregar Club</button>
+        </form>
+
+      <h2>Clubs registrados</h2>
+
+      <div class="table-wrapper">
+            <table>
+            <thead>
+                <tr>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Imagen</th>
+                <th>Página</th>
+                <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-clubs">
+                <!-- Clubs cargados aquí -->
+            </tbody>
+            </table>
+      </div>
+</main>
+
+
+</div>
+<script src="./js/dashboard.js"></script>
+</body>
+</html>

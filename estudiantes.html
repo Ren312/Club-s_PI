@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://kit.fontawesome.com/ab196568d8.js" crossorigin="anonymous"></script>
+  <title>Estudiantes - Dashboard UTTN</title>
+  <link rel="stylesheet" href="./css/Dshhboard.css" />
+</head>
+<body>
+  <header>
+    <img src="./img/WhatsApp Image 2025-05-29 at 7.56.07 AM.jpeg" alt="Logo UTTN" />
+    <nav class="nav-buttons">
+      <a href="./index.html" title="Cerrar sesión">
+        <i class="fa-solid fa-right-from-bracket"></i>
+      </a>
+    </nav>
+  </header>
+  <div class="dashboard-container">
+    <aside class="sidebar">
+      <h2>Menú</h2>
+      <ul>
+        <li><a href="./dashboard.html"><i class="fa-solid fa-house"></i> Inicio</a></li>
+        <li><a href="./clubs.html"><i class="fa-solid fa-people-group"></i> Clubs</a></li>
+        <li><a href="./estudiantes.html"><i class="fa-solid fa-user-graduate"></i> Estudiantes</a></li>
+      </ul>
+    </aside>
+    <main class="main-content">
+      <h2>Listado de estudiantes</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Email</th>
+              <th>Rol</th>
+              <th>Progreso</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody id="tabla-estudiantes">
+            <!-- Estudiantes agregados aquí -->
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
